@@ -7,22 +7,16 @@ extends CharacterBody2D
 @onready var game = get_parent()
 
 
-func _ready() -> void:
-	game.current_state = game.State.START
-
-
 func _physics_process(delta: float) -> void:
 	match game.current_state:
 		game.State.START:
 			if Input.is_action_just_pressed("jump"):
 				game.start_game()
-				velocity.y = 0
-				velocity.y -= jump_strength
+				jump()
 		game.State.PLAY:
 			# ジャンプ入力受付
 			if Input.is_action_just_pressed("jump"):
-				velocity.y = 0
-				velocity.y -= jump_strength
+				jump()
 			# 重力の適用
 			velocity.y += gravity * delta
 			# Spriteの回転
@@ -32,6 +26,7 @@ func _physics_process(delta: float) -> void:
 		game.State.GAME_OVER:
 			if Input.is_action_just_pressed("jump"):
 				get_tree().reload_current_scene()
+				return
 			# 重力の適用
 			velocity.y += gravity * delta
 			# Spriteの回転
@@ -40,10 +35,16 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func jump() -> void:
+	velocity.y = 0
+	velocity.y -= jump_strength
+
+
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	if game.current_state == game.State.PLAY:
 		game.game_over()
 		velocity.x = randf_range(-50, 50)
-		velocity.y = 0
 		if position.y > 0:
-			velocity.y -= jump_strength
+			jump()
+		else:
+			velocity.y = 0

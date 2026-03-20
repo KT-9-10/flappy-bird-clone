@@ -7,6 +7,8 @@ enum State { START, PLAY, GAME_OVER }
 
 func _ready() -> void:
 	current_state = State.START
+	$TitleLabel.show()
+	$GameOverLabel.hide()
 
 
 func start_game() -> void:

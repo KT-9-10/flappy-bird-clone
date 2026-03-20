@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dl1p8rgluvr71" path="res://scenes/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bb4ai2fy83nu7" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="FontFile" uid="uid://bgel0clv3plap" path="res://assets/fonts/x12y20pxScanLine.ttf" id="2_yqjtg"]
+[ext_resource type="FontFile" uid="uid://de1rh8lqgei0o" path="res://assets/fonts/x12y16pxSolidLinker.ttf" id="3_lnu2h"]
 
 [node name="Game" type="Node2D" unique_id=108958075]
 script = ExtResource("1_lnu2h")
@@ -28,14 +28,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -132.0
-offset_top = -59.0
+offset_top = -51.0
 offset_right = 132.0
-offset_bottom = -19.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.9843137, 0.9490196, 0.21176471, 1)
-theme_override_fonts/font = ExtResource("2_yqjtg")
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
+theme_override_fonts/font = ExtResource("3_lnu2h")
+theme_override_font_sizes/font_size = 32
 text = "Flappy Bird"
 horizontal_alignment = 1
 
@@ -47,13 +47,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -132.0
-offset_top = -59.0
+offset_top = -43.0
 offset_right = 132.0
-offset_bottom = -19.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.84313726, 0.48235294, 0.7294118, 1)
-theme_override_fonts/font = ExtResource("2_yqjtg")
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("3_lnu2h")
+theme_override_font_sizes/font_size = 24
 text = "Game Over"
 horizontal_alignment = 1
