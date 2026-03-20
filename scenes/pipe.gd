@@ -1,0 +1,29 @@
+extends Node2D
+
+@export var speed := 70.0
+
+signal passed
+
+
+func _physics_process(delta: float) -> void:
+	position.x -= speed * delta
+
+
+func _on_top_pipe_body_entered(body: Node2D) -> void:
+	body.game_over()
+	
+
+func _on_bottom_pipe_body_entered(body: Node2D) -> void:
+	body.game_over()
+
+
+func stop():
+	speed = 0
+
+
+func _on_score_area_body_entered(_body: Node2D) -> void:
+	passed.emit()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()
