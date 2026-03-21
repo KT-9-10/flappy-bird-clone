@@ -36,7 +36,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
 theme_override_fonts/font = ExtResource("3_lnu2h")
 theme_override_font_sizes/font_size = 80
-text = "FLAPPY BIRD"
+text = "FLAP UP!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
