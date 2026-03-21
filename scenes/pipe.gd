@@ -1,12 +1,15 @@
 extends Node2D
 
 @export var speed := 70.0
+@export var speed_bonus := 10
+var difficulty: int
+
 
 signal passed
 
 
-func _physics_process(delta: float) -> void:
-	position.x -= speed * delta
+func _process(delta: float) -> void:
+	position.x -= (speed + speed_bonus * difficulty) * delta
 
 
 func _on_top_pipe_body_entered(body: Node2D) -> void:

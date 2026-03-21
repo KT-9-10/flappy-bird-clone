@@ -62,7 +62,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="UI" unique_id=1425463226]
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_top = 8.0
@@ -74,7 +74,7 @@ text = "0"
 horizontal_alignment = 2
 
 [node name="HighScoreLabel" type="Label" parent="UI" unique_id=1450585310]
-anchors_preset = -1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -89,10 +89,29 @@ text = "HIGH SCORE: 0"
 horizontal_alignment = 2
 vertical_alignment = 2
 
+[node name="MessageLabel" type="Label" parent="UI" unique_id=1582221973]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -79.0
+offset_top = 8.0
+offset_right = -32.0
+offset_bottom = 89.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_lbhrr")
+theme_override_font_sizes/font_size = 80
+text = "0"
+horizontal_alignment = 2
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1971246770]
 zoom = Vector2(3, 3)
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=967286481]
 wait_time = 1.5
 
+[node name="LevelUpTimer" type="Timer" parent="." unique_id=750369221]
+wait_time = 5.0
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="LevelUpTimer" to="." method="_on_level_up_timer_timeout"]
