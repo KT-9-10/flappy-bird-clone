@@ -1,6 +1,6 @@
 extends Node2D
 
-var score: int = 0
+var score: int
 var current_state: State
 var pipe_scene: PackedScene = preload("res://scenes/pipe.tscn")
 
@@ -8,21 +8,33 @@ enum State { START, PLAY, GAME_OVER }
 
 
 func _ready() -> void:
-	current_state = State.START
-	$TitleLabel.show()
-	$GameOverLabel.hide()
+	# スコアの初期化
+	score = 0
+	$UI/ScoreLabel.text = str(score)
+	$UI/HighScoreLabel.text = "HIGH SCORE: " + str(Global.high_score)
+	# 状態の初期化
+	current_state = State.START 
+	# UIの初期化
+	$UI/TitleLabel.show()
+	$UI/GameOverLabel.hide()
+
+
+func _process(_delta: float) -> void:
+	pass
 
 
 func start_game() -> void:
 	current_state = State.PLAY
-	$TitleLabel.hide()
+	$UI/TitleLabel.hide()
 	$SpawnTimer.start()
 
 
 func game_over() -> void:
 	current_state = State.GAME_OVER
-	$GameOverLabel.show()
-	
+	$UI/GameOverLabel.show()
+	if score > Global.high_score:
+		Global.high_score = score
+		$UI/HighScoreLabel.text = "HIGH SCORE: " + str(Global.high_score)
 
 
 func spawn_pipe() -> void:
@@ -33,8 +45,9 @@ func spawn_pipe() -> void:
 	
 	
 func add_score() -> void:
-	score += 1
-	print("Score: ", score)
+	if current_state == State.PLAY:
+		score += 1
+		$UI/ScoreLabel.text = str(score)
 
 
 func _on_timer_timeout() -> void:

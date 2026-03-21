@@ -13,7 +13,7 @@ size = Vector2(12, 176)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejsh2"]
 size = Vector2(2, 100)
 
-[node name="Pipe" type="Node2D" unique_id=1871878881]
+[node name="Pipe" type="Node2D" unique_id=1871878881 groups=["pipes"]]
 script = ExtResource("1_8p0di")
 
 [node name="TopPipe" type="Area2D" parent="." unique_id=1026951763]
@@ -56,7 +56,7 @@ collision_layer = 0
 position = Vector2(14, 0)
 shape = SubResource("RectangleShape2D_ejsh2")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=381988112 groups=["pipes"]]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=381988112]
 
 [connection signal="body_entered" from="TopPipe" to="." method="_on_top_pipe_body_entered"]
 [connection signal="body_entered" from="BottomPipe" to="." method="_on_bottom_pipe_body_entered"]
