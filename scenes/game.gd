@@ -4,8 +4,12 @@ var score: int
 var current_state: State
 var pipe_scene: PackedScene = preload("res://scenes/pipe.tscn")
 var difficulty: int
+var messages: Dictionary = {
+	"start": "PRESS SPACE / CLICK TO FLAP",
+	"retry": "PRESS SPACE / CLICK TO RETRY",
+}
 
-enum State { START, PLAY, GAME_OVER }
+enum State { START, PLAY, GAME_OVER, RESTART_WAIT }
 
 
 func _ready() -> void:
@@ -18,31 +22,35 @@ func _ready() -> void:
 	# UIの初期化
 	$UI/TitleLabel.show()
 	$UI/GameOverLabel.hide()
+	$UI/MessageLabel.text = messages["start"]
+	$UI/MessageLabel.show()
 	# 難易度の初期化
 	difficulty = 0
-
-
-func _process(_delta: float) -> void:
-	pass
 
 
 func start_game() -> void:
 	current_state = State.PLAY
 	$UI/TitleLabel.hide()
+	$UI/MessageLabel.hide()
 	$SpawnTimer.start()
 	$LevelUpTimer.start()
 
 func game_over() -> void:
+	$LevelUpTimer.stop()
 	current_state = State.GAME_OVER
 	$UI/GameOverLabel.show()
 	if score > Global.high_score:
 		Global.high_score = score
 		$UI/HighScoreLabel.text = "HIGH SCORE: " + str(Global.high_score)
+	await get_tree().create_timer(1.5).timeout
+	$UI/MessageLabel.text = messages["retry"]
+	$UI/MessageLabel.show()
+	current_state = State.RESTART_WAIT
 
 
 func spawn_pipe() -> void:
 	var pipe: Node2D = pipe_scene.instantiate()
-	pipe.position = Vector2(170, randf_range(-40, 40))
+	pipe.position = Vector2(170, randf_range(-32, 32))
 	pipe.connect("passed", add_score)
 	$Obstacles.add_child(pipe)
 	pipe.difficulty = difficulty
@@ -65,4 +73,3 @@ func _on_level_up_timer_timeout() -> void:
 		p.difficulty = difficulty
 	# パイプの発声間隔を短く
 	$SpawnTimer.wait_time *= 0.95
-	print(difficulty)

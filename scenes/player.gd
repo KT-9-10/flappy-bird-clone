@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-@export var jump_strength := 280
-@export var gravity := 800
+@export var jump_strength := 210
+@export var gravity := 500
 @export var max_fall_speed := 400
-var can_restart := false
 
 @onready var game = get_parent()
 
@@ -25,7 +24,12 @@ func _physics_process(delta: float) -> void:
 			# 最大落下スピードを超えないようにする
 			velocity.y = min(velocity.y, max_fall_speed)
 		game.State.GAME_OVER:
-			if Input.is_action_just_pressed("jump") and can_restart:
+			# 重力の適用
+			velocity.y += gravity * delta
+			# Spriteの回転
+			rotation += 0.5
+		game.State.RESTART_WAIT:
+			if Input.is_action_just_pressed("jump"):
 				get_tree().reload_current_scene()
 				return
 			# 重力の適用
@@ -53,7 +57,3 @@ func game_over():
 			jump()
 		else:
 			velocity.y = 0
-		# 一瞬入力を受け付けなくする
-		can_restart = false
-		await get_tree().create_timer(0.5).timeout
-		can_restart = true

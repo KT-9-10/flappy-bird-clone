@@ -17,7 +17,7 @@ size = Vector2(2, 100)
 script = ExtResource("1_8p0di")
 
 [node name="TopPipe" type="Area2D" parent="." unique_id=1026951763]
-position = Vector2(0, -48)
+position = Vector2(0, -40)
 collision_layer = 2
 
 [node name="TopCapSprite" type="Sprite2D" parent="TopPipe" unique_id=1049556164]
@@ -34,7 +34,7 @@ position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_arpqm")
 
 [node name="BottomPipe" type="Area2D" parent="." unique_id=361425466]
-position = Vector2(0, 48)
+position = Vector2(0, 40)
 collision_layer = 2
 
 [node name="BottomCapSprite" type="Sprite2D" parent="BottomPipe" unique_id=1721998611]
