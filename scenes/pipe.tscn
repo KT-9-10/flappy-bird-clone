@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b6uid7xdb5wfb" path="res://scenes/pipe.gd" id="1_8p0di"]
 [ext_resource type="Texture2D" uid="uid://dmvropml4acq4" path="res://assets/sprites/pipe_cap.png" id="1_arpqm"]
 [ext_resource type="Texture2D" uid="uid://b55qmtbihtr86" path="res://assets/sprites/pipe_body.png" id="2_8p0di"]
+[ext_resource type="AudioStream" uid="uid://b27wu2pt84anb" path="res://assets/sounds/sfx_movement_ladder2b.wav" id="4_ejsh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arpqm"]
 size = Vector2(12, 176)
@@ -57,6 +58,10 @@ position = Vector2(14, 0)
 shape = SubResource("RectangleShape2D_ejsh2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=381988112]
+
+[node name="PassedSE" type="AudioStreamPlayer" parent="." unique_id=1580471906]
+stream = ExtResource("4_ejsh2")
+volume_db = -3.0
 
 [connection signal="body_entered" from="TopPipe" to="." method="_on_top_pipe_body_entered"]
 [connection signal="body_entered" from="BottomPipe" to="." method="_on_bottom_pipe_body_entered"]

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bb4ai2fy83nu7" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="FontFile" uid="uid://de1rh8lqgei0o" path="res://assets/fonts/x12y16pxSolidLinker.ttf" id="3_lnu2h"]
 [ext_resource type="FontFile" uid="uid://l56bswqtx83s" path="res://assets/fonts/x10y12pxDonguriDuel.ttf" id="5_iywne"]
+[ext_resource type="AudioStream" uid="uid://70jb4mkidahu" path="res://assets/sounds/sfx_sounds_falling3.wav" id="5_p57ef"]
 
 [node name="Game" type="Node2D" unique_id=108958075]
 script = ExtResource("1_lnu2h")
@@ -109,6 +110,9 @@ wait_time = 1.5
 
 [node name="LevelUpTimer" type="Timer" parent="." unique_id=750369221]
 wait_time = 5.0
+
+[node name="GameOverSE" type="AudioStreamPlayer" parent="." unique_id=1538668786]
+stream = ExtResource("5_p57ef")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="LevelUpTimer" to="." method="_on_level_up_timer_timeout"]

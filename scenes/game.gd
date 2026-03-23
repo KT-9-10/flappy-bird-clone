@@ -36,9 +36,10 @@ func start_game() -> void:
 	$LevelUpTimer.start()
 
 func game_over() -> void:
+	current_state = State.GAME_OVER 
 	$LevelUpTimer.stop()
-	current_state = State.GAME_OVER
 	$UI/GameOverLabel.show()
+	$GameOverSE.play()
 	if score > Global.high_score:
 		Global.high_score = score
 		$UI/HighScoreLabel.text = "HIGH SCORE: " + str(Global.high_score)

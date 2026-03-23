@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var jump_strength := 230
-@export var gravity := 600
+@export var gravity := 650
 @export var max_fall_speed := 400
 @onready var game = get_parent()
 
