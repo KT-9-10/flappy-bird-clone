@@ -1,5 +1,7 @@
 extends Node2D
 
+enum State { START, PLAY, GAME_OVER, RESTART_WAIT }
+
 var score: int
 var current_state: State
 var pipe_scene: PackedScene = preload("res://scenes/pipe.tscn")
@@ -8,8 +10,6 @@ var messages: Dictionary = {
 	"start": "PRESS SPACE / CLICK TO FLAP",
 	"retry": "PRESS SPACE / CLICK TO RETRY",
 }
-
-enum State { START, PLAY, GAME_OVER, RESTART_WAIT }
 
 
 func _ready() -> void:

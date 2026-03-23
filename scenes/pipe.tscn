@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://l34jwq0bdvlm"]
 
 [ext_resource type="Script" uid="uid://b6uid7xdb5wfb" path="res://scenes/pipe.gd" id="1_8p0di"]
-[ext_resource type="Texture2D" uid="uid://dmvropml4acq4" path="res://assets/pipe_cap.png" id="1_arpqm"]
-[ext_resource type="Texture2D" uid="uid://b55qmtbihtr86" path="res://assets/pipe_body.png" id="2_8p0di"]
+[ext_resource type="Texture2D" uid="uid://dmvropml4acq4" path="res://assets/sprites/pipe_cap.png" id="1_arpqm"]
+[ext_resource type="Texture2D" uid="uid://b55qmtbihtr86" path="res://assets/sprites/pipe_body.png" id="2_8p0di"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arpqm"]
 size = Vector2(12, 176)

@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-@export var jump_strength := 210
-@export var gravity := 500
+@export var jump_strength := 230
+@export var gravity := 600
 @export var max_fall_speed := 400
-
 @onready var game = get_parent()
 
 
@@ -13,10 +12,12 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("jump"):
 				game.start_game()
 				jump()
+				$JumpSE.play()
 		game.State.PLAY:
 			# ジャンプ入力受付
 			if Input.is_action_just_pressed("jump"):
 				jump()
+				$JumpSE.play()
 			# 重力の適用
 			velocity.y += gravity * delta
 			# Spriteの回転
