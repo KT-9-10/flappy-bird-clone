@@ -9,7 +9,15 @@
 [ext_resource type="FontFile" uid="uid://l56bswqtx83s" path="res://assets/fonts/x10y12pxDonguriDuel.ttf" id="5_iywne"]
 [ext_resource type="AudioStream" uid="uid://70jb4mkidahu" path="res://assets/sounds/sfx_sounds_falling3.wav" id="5_p57ef"]
 [ext_resource type="FontFile" uid="uid://b1m727lru44g2" path="res://assets/fonts/x12y16pxMaruMonica.ttf" id="5_u5sy4"]
+[ext_resource type="Shader" uid="uid://dhbp4nsw04cj6" path="res://scenes/title_label.tres" id="6_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://b27wu2pt84anb" path="res://assets/sounds/sfx_movement_ladder2b.wav" id="7_u5sy4"]
+[ext_resource type="Shader" uid="uid://d358tfbw1gs23" path="res://scenes/game_over_label.tres" id="8_dinhu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dinhu"]
+shader = ExtResource("6_kvpfn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvuet"]
+shader = ExtResource("8_dinhu")
 
 [node name="Game" type="Node2D" unique_id=108958075]
 script = ExtResource("1_lnu2h")
@@ -65,6 +73,7 @@ position = Vector2(-48, 8)
 [node name="UI" type="CanvasLayer" parent="." unique_id=1660941607]
 
 [node name="TitleLabel" type="Label" parent="UI" unique_id=1905578523]
+material = SubResource("ShaderMaterial_dinhu")
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.3
@@ -74,12 +83,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
 theme_override_fonts/font = ExtResource("3_lnu2h")
-theme_override_font_sizes/font_size = 96
+theme_override_font_sizes/font_size = 112
 text = "FLAP UP!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GameOverLabel" type="Label" parent="UI" unique_id=979789298]
+material = SubResource("ShaderMaterial_kvuet")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
