@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dl1p8rgluvr71" path="res://scenes/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bb4ai2fy83nu7" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://b13luih7bf31f" path="res://assets/sprites/mountain_back.png" id="2_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://cdd4yvrq10eyu" path="res://assets/sprites/mountain_front.png" id="2_gee14"]
+[ext_resource type="Texture2D" uid="uid://bqxkrwfs6843a" path="res://assets/sprites/cloud.png" id="2_vtaks"]
 [ext_resource type="FontFile" uid="uid://de1rh8lqgei0o" path="res://assets/fonts/x12y16pxSolidLinker.ttf" id="3_lnu2h"]
 [ext_resource type="FontFile" uid="uid://l56bswqtx83s" path="res://assets/fonts/x10y12pxDonguriDuel.ttf" id="5_iywne"]
 [ext_resource type="AudioStream" uid="uid://70jb4mkidahu" path="res://assets/sounds/sfx_sounds_falling3.wav" id="5_p57ef"]
@@ -21,6 +24,39 @@ offset_right = 162.0
 offset_bottom = 91.0
 color = Color(0.37254903, 0.8039216, 0.89411765, 1)
 
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1306327936]
+scroll_scale = Vector2(0.5, 1)
+scroll_offset = Vector2(0, -72)
+repeat_size = Vector2(480, 0)
+autoscroll = Vector2(-10, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1224860188]
+texture = ExtResource("2_vtaks")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=292203875]
+scroll_scale = Vector2(0.5, 1)
+scroll_offset = Vector2(0, -56)
+repeat_size = Vector2(480, 0)
+autoscroll = Vector2(-30, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=1846004524]
+texture = ExtResource("2_0tnpc")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1495449011]
+scroll_scale = Vector2(0.5, 1)
+scroll_offset = Vector2(0, -56)
+repeat_size = Vector2(480, 0)
+autoscroll = Vector2(-40, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1552186608]
+texture = ExtResource("2_gee14")
+centered = false
+
 [node name="Player" parent="." unique_id=1537798451 instance=ExtResource("1_uwrxv")]
 position = Vector2(-48, 8)
 
@@ -38,7 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
 theme_override_fonts/font = ExtResource("3_lnu2h")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 96
 text = "FLAP UP!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -57,7 +93,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.84313726, 0.48235294, 0.7294118, 1)
 theme_override_fonts/font = ExtResource("3_lnu2h")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 72
 text = "GAME OVER
 "
 horizontal_alignment = 1
