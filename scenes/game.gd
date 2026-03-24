@@ -47,7 +47,7 @@ func game_over() -> void:
 		Global.high_score = score
 		Global.save_high_score()
 		$UI/HighScoreLabel.text = "HIGH SCORE: " + str(Global.high_score)
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.0).timeout
 	$UI/MessageLabel.text = messages["retry"]
 	$UI/MessageLabel.show()
 	current_state = State.RESTART_WAIT
@@ -63,9 +63,17 @@ func spawn_pipe() -> void:
 	
 func add_score() -> void:
 	if current_state == State.PLAY:
+		# スコアの更新
 		score += 1
 		$UI/ScoreLabel.text = str(score)
+		# スコアのアニメーション
+		$UI/ScoreLabel.pivot_offset = $UI/ScoreLabel.size / 2 # 起点を中心に
+		var tween = get_tree().create_tween()
+		tween.tween_property($UI/ScoreLabel, "scale", Vector2(1.4, 1.4), 0.1)
+		tween.tween_property($UI/ScoreLabel, "scale", Vector2(1, 1), 0.1)
+		# SEの再生
 		$PassedSE.play()
+
 
 func _on_timer_timeout() -> void:
 	spawn_pipe()

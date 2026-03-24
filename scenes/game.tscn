@@ -103,7 +103,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.84313726, 0.48235294, 0.7294118, 1)
 theme_override_fonts/font = ExtResource("3_lnu2h")
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 80
 text = "GAME OVER
 "
 horizontal_alignment = 1
