@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://l56bswqtx83s" path="res://assets/fonts/x10y12pxDonguriDuel.ttf" id="5_iywne"]
 [ext_resource type="AudioStream" uid="uid://70jb4mkidahu" path="res://assets/sounds/sfx_sounds_falling3.wav" id="5_p57ef"]
 [ext_resource type="FontFile" uid="uid://b1m727lru44g2" path="res://assets/fonts/x12y16pxMaruMonica.ttf" id="5_u5sy4"]
-[ext_resource type="AudioStream" uid="uid://b27wu2pt84anb" path="res://assets/sounds/sfx_movement_ladder2b.wav" id="7_u5sy4"]
 
 [node name="Game" type="Node2D" unique_id=108958075]
 script = ExtResource("1_lnu2h")
@@ -127,10 +126,6 @@ wait_time = 5.0
 
 [node name="GameOverSE" type="AudioStreamPlayer" parent="." unique_id=1538668786]
 stream = ExtResource("5_p57ef")
-
-[node name="PassedSE" type="AudioStreamPlayer" parent="." unique_id=236516163]
-stream = ExtResource("7_u5sy4")
-volume_db = -3.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="LevelUpTimer" to="." method="_on_level_up_timer_timeout"]

@@ -14,6 +14,7 @@ var messages: Dictionary = {
 
 func _ready() -> void:
 	Global.load_high_score()
+	$UI/VersionLabel.text = "v." + str(Global.VERSION)
 	# スコアの初期化
 	score = 0
 	$UI/ScoreLabel.text = str(score)
@@ -35,6 +36,7 @@ func start_game() -> void:
 	$UI/MessageLabel.hide()
 	$SpawnTimer.start()
 	$LevelUpTimer.start()
+
 
 func game_over() -> void:
 	current_state = State.GAME_OVER 
@@ -63,7 +65,7 @@ func add_score() -> void:
 	if current_state == State.PLAY:
 		score += 1
 		$UI/ScoreLabel.text = str(score)
-
+		$PassedSE.play()
 
 func _on_timer_timeout() -> void:
 	spawn_pipe()

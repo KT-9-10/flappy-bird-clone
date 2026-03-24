@@ -26,7 +26,6 @@ func stop():
 
 func _on_score_area_body_entered(_body: Node2D) -> void:
 	passed.emit()
-	$PassedSE.play()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
