@@ -13,6 +13,7 @@ var messages: Dictionary = {
 
 
 func _ready() -> void:
+	Global.load_high_score()
 	# スコアの初期化
 	score = 0
 	$UI/ScoreLabel.text = str(score)
@@ -42,6 +43,7 @@ func game_over() -> void:
 	$GameOverSE.play()
 	if score > Global.high_score:
 		Global.high_score = score
+		Global.save_high_score()
 		$UI/HighScoreLabel.text = "HIGH SCORE: " + str(Global.high_score)
 	await get_tree().create_timer(1.5).timeout
 	$UI/MessageLabel.text = messages["retry"]
