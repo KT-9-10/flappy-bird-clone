@@ -36,7 +36,7 @@ color = Color(0.37254903, 0.8039216, 0.89411765, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1306327936]
 scroll_scale = Vector2(0.5, 1)
-scroll_offset = Vector2(0, -72)
+scroll_offset = Vector2(-40, -72)
 repeat_size = Vector2(480, 0)
 autoscroll = Vector2(-10, 0)
 repeat_times = 3
