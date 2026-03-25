@@ -33,7 +33,7 @@ func _ready() -> void:
 	difficulty = 0
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# 死亡時に画面を揺らすための処理
 	if shake_strength > 0.0:
 		$Camera2D.offset = Vector2(
@@ -58,10 +58,28 @@ func game_over() -> void:
 	$GameOverSE.play()
 	shake_strength = 10.0 # 画面をシェイクさせる強さの設定
 	if score > Global.high_score:
+		# ハイスコアデータの更新
 		Global.high_score = score
 		Global.save_high_score()
+		
+		# ハイスコアラベルの更新
+		var label = $UI/HighScoreLabel
 		$UI/HighScoreLabel.text = "HIGH SCORE: " + str(Global.high_score)
-	await get_tree().create_timer(1.0).timeout
+		
+		# ハイスコア演出
+		label.modulate = Color(1, 0.9, 0.3)
+		var tween = get_tree().create_tween()
+		# ① まず中央に移動（1回だけ）
+		var center_pos = get_viewport_rect().size / 2 - label.size / 2
+		var offset_pos = center_pos + Vector2(0, 40)
+		tween.tween_property(label, "position", offset_pos, 0.2)
+		# ② 拡大縮小をループ
+		label.pivot_offset = label.size / 2
+		tween.set_loops(5)
+		tween.tween_property(label, "scale", Vector2(1.2, 1.2), 0.3)
+		tween.tween_property(label, "scale", Vector2(1, 1), 0.3)
+		
+	await get_tree().create_timer(1.5).timeout
 	$UI/MessageLabel.text = messages["retry"]
 	$UI/MessageLabel.show()
 	current_state = State.RESTART_WAIT
