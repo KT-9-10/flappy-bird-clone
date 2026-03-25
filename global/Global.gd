@@ -2,6 +2,7 @@ extends Node
 
 const SAVE_PATH := "user://kt910_flap_up_highscore.json"
 const VERSION := 1
+const VERSION_MINOR := 1
 const SECRET := "tiny_action_big_results"
 
 var high_score := 0
@@ -74,3 +75,4 @@ func load_high_score() -> void:
 func make_checksum(score: int, version: int) -> String:
 	var text = str(score) + "|" + str(version) + "|" + SECRET
 	return text.sha256_text()
+	

@@ -12,6 +12,7 @@
 [ext_resource type="Shader" uid="uid://dhbp4nsw04cj6" path="res://scenes/title_label.tres" id="6_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://b27wu2pt84anb" path="res://assets/sounds/sfx_movement_ladder2b.wav" id="7_u5sy4"]
 [ext_resource type="Shader" uid="uid://d358tfbw1gs23" path="res://scenes/game_over_label.tres" id="8_dinhu"]
+[ext_resource type="PackedScene" uid="uid://cc6tvxvw78hh" path="res://scenes/jump_effect.tscn" id="13_kvuet"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dinhu"]
 shader = ExtResource("6_kvpfn")
@@ -21,6 +22,7 @@ shader = ExtResource("8_dinhu")
 
 [node name="Game" type="Node2D" unique_id=108958075]
 script = ExtResource("1_lnu2h")
+jump_effect_scene = ExtResource("13_kvuet")
 metadata/_edit_group_ = true
 metadata/_edit_horizontal_guides_ = [-90.0]
 metadata/_edit_vertical_guides_ = [170.0]

@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var speed := 70.0
-@export var speed_bonus := 10
-var difficulty: int
+@export var speed_bonus := 10.0
+var difficulty: int = 0
 
 
 signal passed
