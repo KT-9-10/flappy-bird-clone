@@ -1,7 +1,7 @@
 extends GPUParticles2D
 
-@export var velocity := 120.0
-@export var velocity_bonus := 10.0
+@export var velocity := 100.0
+@export var velocity_bonus := 20.0
 var difficulty: int = 0
 
 
