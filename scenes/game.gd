@@ -16,12 +16,12 @@ var shake_strength := 0.0
 
 
 func _ready() -> void:
-	Global.load_high_score()
+	FlapUpGlobal.load_high_score()
 	$UI/VersionLabel.text = get_version_string()
 	# スコアの初期化
 	score = 0
 	$UI/ScoreLabel.text = str(score)
-	$UI/HighScoreLabel.text = "HIGH SCORE: " + str(Global.high_score)
+	$UI/HighScoreLabel.text = "HIGH SCORE: " + str(FlapUpGlobal.high_score)
 	# 状態の初期化
 	current_state = State.START 
 	# UIの初期化
@@ -57,14 +57,14 @@ func game_over() -> void:
 	$UI/GameOverLabel.show()
 	$GameOverSE.play()
 	shake_strength = 10.0 # 画面をシェイクさせる強さの設定
-	if score > Global.high_score:
+	if score > FlapUpGlobal.high_score:
 		# ハイスコアデータの更新
-		Global.high_score = score
-		Global.save_high_score()
+		FlapUpGlobal.high_score = score
+		FlapUpGlobal.save_high_score()
 		
 		# ハイスコアラベルの更新
 		var label = $UI/HighScoreLabel
-		$UI/HighScoreLabel.text = "HIGH SCORE: " + str(Global.high_score)
+		$UI/HighScoreLabel.text = "HIGH SCORE: " + str(FlapUpGlobal.high_score)
 		
 		# ハイスコア演出
 		label.modulate = Color(1, 0.9, 0.3)
@@ -108,7 +108,7 @@ func add_score() -> void:
 
 
 func get_version_string() -> String:
-	return "v%d.%d" % [Global.VERSION, Global.VERSION_MINOR]
+	return "v%d.%d" % [FlapUpGlobal.VERSION, FlapUpGlobal.VERSION_MINOR]
 
 
 func spawn_pass_effect(pos: Vector2):
